@@ -1,2 +1,3 @@
-# ps-app
+# PsApp - 
+
 Playstation Store Mobile App
