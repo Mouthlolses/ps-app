@@ -12,8 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import coil3.compose.AsyncImagePainter.State.Empty.painter
+import com.example.psapp.R
 
 
 @Composable
@@ -28,11 +32,10 @@ fun Banner(imagemUrls: String) {
 
     )
 
-
     Card(
         onClick = {},
         modifier = Modifier
-            .padding(top = 100.dp)
+            .padding(top = 80.dp)
             .padding(horizontal = 16.dp)
             .size(width = 370.dp, height = 200.dp),
         colors = CardColors(
@@ -46,10 +49,17 @@ fun Banner(imagemUrls: String) {
         AsyncImage(
             model = imagemUrls,
             contentDescription = null,
+            placeholder = painterResource( R.drawable.ic_launcher_background),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
         )
     }
 }
 
+
+@Preview
+@Composable
+fun PreviewBanner() {
+    Banner(imagemUrls = "https://www.europanet.com.br/upload/id_produto/60_____/6001506p.jpg")
+}
 
