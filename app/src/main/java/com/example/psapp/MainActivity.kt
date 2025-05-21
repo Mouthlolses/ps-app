@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.Composable
 import androidx.core.view.WindowCompat
 import com.example.psapp.ui.screen.HomeScreen
 import com.example.psapp.ui.theme.PsAppTheme
@@ -14,14 +13,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         enableEdgeToEdge()
-        setContent { App() }
-    }
-}
-
-
-@Composable
-fun App() {
-    PsAppTheme {
-        HomeScreen()
+        setContent {
+            PsAppTheme {
+                HomeScreen()
+            }
+        }
     }
 }

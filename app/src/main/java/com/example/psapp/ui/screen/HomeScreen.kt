@@ -25,21 +25,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.psapp.model.cardItems
+import com.example.psapp.images.cardItems
+import com.example.psapp.images.imagemUrl
 import com.example.psapp.ui.components.Banner
 import com.example.psapp.ui.components.MeuCard
 
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-
-    val imagemUrl = listOf(
-        "https://www.europanet.com.br/upload/id_produto/60_____/6001506p.jpg",
-        "https://www.gtavice.net/content/images/gta-vi-key-3840x2160.jpg",
-        "https://images8.alphacoders.com/138/1385514.png",
-        "https://www.kojimaproductions.jp/sites/default/files/2025-03/products_coverimage0309.jpg",
-        "https://www.silenthillmemories.net/shf/art/pics/silent_hill_f_key_art_01.jpg"
-    )
 
     Box(
         modifier = Modifier

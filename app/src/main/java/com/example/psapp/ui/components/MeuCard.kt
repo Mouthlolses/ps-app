@@ -1,7 +1,9 @@
 package com.example.psapp.ui.components
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,17 +24,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.psapp.R
+import androidx.core.net.toUri
 import com.example.psapp.extensions.toBrazilianCurrency
 import com.example.psapp.model.GameCards
-import java.math.BigDecimal
 
 
 @Composable
 fun MeuCard(item: GameCards) {
+
+    val context = LocalContext.current
+
     Surface(
         modifier = Modifier
             .padding(8.dp),
@@ -49,6 +53,7 @@ fun MeuCard(item: GameCards) {
             val boxSize = 100.dp
             val imageSize = 160.dp
             val offset = 50.dp
+
             Box(
                 modifier = Modifier
                     .height(boxSize)
@@ -68,7 +73,11 @@ fun MeuCard(item: GameCards) {
                         .offset(y = offset)
                         .size(imageSize)
                         .clip(RoundedCornerShape(8.dp))
-                        .align(Alignment.BottomCenter),
+                        .align(Alignment.BottomCenter)
+                        .clickable{
+                            val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
+                            context.startActivity(intent)
+                        },
                     contentScale = ContentScale.Crop
                 )
             }
@@ -93,10 +102,5 @@ fun MeuCard(item: GameCards) {
     }
 }
 
-@Preview
-@Composable
-fun MeuCardPreview() {
-    MeuCard(GameCards("Ghost of Yotei", BigDecimal(349.99), R.drawable.game_image))
-}
 
 

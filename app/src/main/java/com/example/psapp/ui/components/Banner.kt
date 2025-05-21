@@ -1,7 +1,9 @@
 package com.example.psapp.ui.components
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
@@ -12,12 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import coil3.compose.AsyncImagePainter.State.Empty.painter
-import com.example.psapp.R
+import androidx.core.net.toUri
 
 
 @Composable
@@ -29,15 +30,20 @@ fun Banner(imagemUrls: String) {
         ),
         start = Offset(0f, 0f),
         end = Offset(1000f, 0f)
-
     )
 
+    val context = LocalContext.current
+    val url = "https://www.europanet.com.br/upload/id_produto/60_____/6001506p.jpg"
+
     Card(
-        onClick = {},
         modifier = Modifier
             .padding(top = 80.dp)
             .padding(horizontal = 16.dp)
-            .size(width = 370.dp, height = 200.dp),
+            .size(width = 370.dp, height = 200.dp)
+            .clickable {
+                val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                context.startActivity(intent)
+            },
         colors = CardColors(
             contentColor = Color.Black,
             containerColor = Color.White,
@@ -49,7 +55,6 @@ fun Banner(imagemUrls: String) {
         AsyncImage(
             model = imagemUrls,
             contentDescription = null,
-            placeholder = painterResource( R.drawable.ic_launcher_background),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
         )
