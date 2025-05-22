@@ -37,7 +37,6 @@ fun Banner(imagemUrls: String) {
 
     Card(
         modifier = Modifier
-            .padding(top = 80.dp)
             .padding(horizontal = 16.dp)
             .size(width = 370.dp, height = 200.dp)
             .clickable {
