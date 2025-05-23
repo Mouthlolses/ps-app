@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
@@ -69,7 +70,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         ) {
             LazyRow(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                modifier = Modifier.fillMaxWidth()
             ) {
                 items(imagemUrl) { imagemUrls ->
                     Banner(imagemUrls)
@@ -80,7 +82,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 columns = GridCells.Fixed(2),
                 contentPadding = PaddingValues(0.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 items(cardItems) { item ->
                     MeuCard(item)
