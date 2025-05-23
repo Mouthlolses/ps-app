@@ -26,10 +26,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import com.example.psapp.R
 import com.example.psapp.extensions.toBrazilianCurrency
 import com.example.psapp.model.GameCards
+import java.math.BigDecimal
 
 
 @Composable
@@ -74,7 +77,7 @@ fun MeuCard(item: GameCards) {
                         .size(imageSize)
                         .clip(RoundedCornerShape(8.dp))
                         .align(Alignment.BottomCenter)
-                        .clickable{
+                        .clickable {
                             val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
                             context.startActivity(intent)
                         },
@@ -102,5 +105,10 @@ fun MeuCard(item: GameCards) {
     }
 }
 
-
+@Preview
+@Composable
+fun MeuCardPreview(){
+    val drawable = R.drawable.game_image
+    MeuCard(GameCards("Ghost of Yotei", BigDecimal(399),"v", drawable))
+}
 
