@@ -1,5 +1,6 @@
 package com.example.psapp.ui.screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -44,6 +45,8 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         containerColor = Color.White,
         topBar = {
             CenterAlignedTopAppBar(
+                modifier = Modifier
+                    .background(Color.Gray),
                 title = { Text("Playstation Store") },
                 navigationIcon = {
                     IconButton(onClick = {}) {

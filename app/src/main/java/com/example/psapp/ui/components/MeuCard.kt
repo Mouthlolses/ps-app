@@ -43,7 +43,7 @@ fun MeuCard(item: GameCards) {
     Surface(
         modifier = Modifier
             .padding(8.dp),
-        shape = RoundedCornerShape(15.dp),
+        shape = RoundedCornerShape(16.dp),
         tonalElevation = 16.dp,
         shadowElevation = 8.dp
     ) {
