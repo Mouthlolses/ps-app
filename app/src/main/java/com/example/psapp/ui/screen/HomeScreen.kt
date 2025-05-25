@@ -40,7 +40,7 @@ import com.example.psapp.ui.components.MeuCard
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen() {
     Scaffold(
         containerColor = Color.White,
         topBar = {
