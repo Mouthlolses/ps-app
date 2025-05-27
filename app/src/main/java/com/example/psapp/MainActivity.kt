@@ -16,6 +16,7 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import com.example.psapp.ui.screen.HomeScreen
@@ -36,6 +37,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@Preview
 @Composable
 fun HomeWithDrawer() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
