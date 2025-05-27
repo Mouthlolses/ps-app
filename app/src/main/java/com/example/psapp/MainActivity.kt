@@ -4,9 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Divider
+import androidx.compose.material3.DrawerValue
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ModalDrawerSheet
+import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.Text
+import androidx.compose.material3.rememberDrawerState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import com.example.psapp.ui.screen.HomeScreen
 import com.example.psapp.ui.theme.PsAppTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +29,43 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PsAppTheme {
-                HomeScreen()
+                HomeWithDrawer()
             }
         }
+    }
+}
+
+
+@Composable
+fun HomeWithDrawer() {
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val scope = rememberCoroutineScope()
+
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            ModalDrawerSheet {
+                Text("Menu", modifier = Modifier.padding(16.dp))
+                HorizontalDivider()
+                NavigationDrawerItem(
+                    label = { Text("Início") },
+                    selected = false,
+                    onClick = {
+                        scope.launch { drawerState.close() }
+                    }
+                )
+                NavigationDrawerItem(
+                    label = { Text("Configurações") },
+                    selected = false,
+                    onClick = {
+                        scope.launch { drawerState.close() }
+                    }
+                )
+            }
+        }
+    ) {
+        HomeScreen(onMenuClick = {
+            scope.launch { drawerState.open() }
+        })
     }
 }

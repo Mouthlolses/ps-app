@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -25,37 +26,56 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.psapp.images.cardItems
 import com.example.psapp.images.imagemUrl
 import com.example.psapp.ui.components.Banner
 import com.example.psapp.ui.components.CustomBottomBar
+import com.example.psapp.ui.components.HomeTextField
 import com.example.psapp.ui.components.MeuCard
 
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onMenuClick: () -> Unit) {
+
+    var isSeaching by remember { mutableStateOf(false) }
+    var searchText by remember { mutableStateOf("") }
+
     Scaffold(
         containerColor = Color.White,
         topBar = {
             CenterAlignedTopAppBar(
                 modifier = Modifier
                     .background(Color.Gray),
-                title = { Text("Playstation Store") },
+                title = {
+                    if (isSeaching) {
+                        HomeTextField()
+                    } else {
+                        Text("Playstation Store")
+                    }
+                },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = onMenuClick) {
                         Icon(Icons.Default.Menu, contentDescription = "Menu")
                     }
                 },
                 actions = {
-                    IconButton(onClick = { /* ação */ }) {
-                        Icon(Icons.Default.Search, contentDescription = "Buscar")
+                    IconButton(onClick = {
+                        isSeaching = !isSeaching
+                        if (!isSeaching) searchText = ""
+                    }) {
+                        Icon(
+                            imageVector = if (isSeaching) Icons.Default.Close else Icons.Default.Search,
+                            contentDescription = if (isSeaching) "Fechar" else "Buscar"
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
@@ -84,8 +104,6 @@ fun HomeScreen() {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 contentPadding = PaddingValues(0.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
             ) {
                 items(cardItems) { item ->
                     MeuCard(item)
