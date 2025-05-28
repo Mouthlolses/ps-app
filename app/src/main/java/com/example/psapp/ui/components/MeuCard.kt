@@ -36,9 +36,7 @@ import java.math.BigDecimal
 
 
 @Composable
-fun MeuCard(item: GameCards) {
-
-    val context = LocalContext.current
+fun MeuCard(item: GameCards, onClick: () -> Unit) {
 
     Surface(
         modifier = Modifier
@@ -78,8 +76,7 @@ fun MeuCard(item: GameCards) {
                         .clip(RoundedCornerShape(8.dp))
                         .align(Alignment.BottomCenter)
                         .clickable {
-                            val intent = Intent(Intent.ACTION_VIEW, item.url.toUri())
-                            context.startActivity(intent)
+                            onClick()
                         },
                     contentScale = ContentScale.Crop
                 )
@@ -105,10 +102,4 @@ fun MeuCard(item: GameCards) {
     }
 }
 
-@Preview
-@Composable
-fun MeuCardPreview(){
-    val drawable = R.drawable.game_image
-    MeuCard(GameCards("Ghost of Yotei", BigDecimal(399),"v", drawable))
-}
 

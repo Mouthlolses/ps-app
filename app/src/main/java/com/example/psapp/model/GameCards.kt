@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import java.math.BigDecimal
 
 data class GameCards(
+    val id: Int,
     val title: String,
     val price: BigDecimal,
     val url: String,

@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.psapp.images.cardItems
 import com.example.psapp.images.imagemUrl
 import com.example.psapp.ui.components.Banner
@@ -44,7 +45,7 @@ import com.example.psapp.ui.components.MeuCard
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(onMenuClick: () -> Unit) {
+fun HomeScreen(navController: NavHostController, onMenuClick: (() -> Unit)) {
 
     var isSeaching by remember { mutableStateOf(false) }
     var searchText by remember { mutableStateOf("") }
@@ -106,7 +107,13 @@ fun HomeScreen(onMenuClick: () -> Unit) {
                 contentPadding = PaddingValues(0.dp),
             ) {
                 items(cardItems) { item ->
-                    MeuCard(item)
+                    MeuCard(item = item, onClick = {
+                        when (item.id) {
+                            1 -> {
+                                navController.navigate("detalhesDoJogo")
+                            }
+                        }
+                    })
                 }
             }
         }

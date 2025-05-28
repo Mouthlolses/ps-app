@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.ModalDrawerSheet
@@ -19,6 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.psapp.navigation.AppNavigation
 import com.example.psapp.ui.screen.HomeScreen
 import com.example.psapp.ui.theme.PsAppTheme
 import kotlinx.coroutines.launch
@@ -43,6 +47,7 @@ fun HomeWithDrawer() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
+
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -66,8 +71,6 @@ fun HomeWithDrawer() {
             }
         }
     ) {
-        HomeScreen(onMenuClick = {
-            scope.launch { drawerState.open() }
-        })
+        AppNavigation()
     }
 }
