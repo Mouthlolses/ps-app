@@ -18,12 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
-import androidx.navigation.NavController
-import androidx.navigation.NavHost
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.psapp.navigation.AppNavigation
-import com.example.psapp.ui.screen.HomeScreen
 import com.example.psapp.ui.theme.PsAppTheme
 import kotlinx.coroutines.launch
 

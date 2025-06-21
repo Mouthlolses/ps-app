@@ -104,7 +104,7 @@ fun HomeScreen(navController: NavHostController, onMenuClick: (() -> Unit)) {
             Spacer(modifier = Modifier.height(16.dp))
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(0.dp),
+                contentPadding = PaddingValues(8.dp),
             ) {
                 items(cardItems) { item ->
                     MeuCard(item = item, onClick = {
