@@ -3,6 +3,7 @@ package com.example.psapp.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,8 +25,9 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.psapp.extensions.toBrazilianCurrency
+import com.example.psapp.R
 import com.example.psapp.model.GameCards
 
 
@@ -34,7 +36,7 @@ fun MeuCard(item: GameCards, onClick: () -> Unit) {
 
     Surface(
         modifier = Modifier
-            .padding(8.dp),
+            .padding(6.dp),
         shape = RoundedCornerShape(16.dp),
         tonalElevation = 16.dp,
         shadowElevation = 8.dp
@@ -78,22 +80,32 @@ fun MeuCard(item: GameCards, onClick: () -> Unit) {
             Spacer(modifier = Modifier.height(offset))
             Column(
                 Modifier
-                    .padding(16.dp)
+                    .padding(8.dp)
+                    .align(Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(
                     text = item.title,
                     maxLines = 1,
-                )
-                Text(
-                    text = item.price.toBrazilianCurrency(),
-                    maxLines = 1,
                     modifier = Modifier
-                        .padding(top = 16.dp)
+                        .padding(bottom = 16.dp)
                 )
             }
-
         }
     }
 }
 
 
+@Preview
+@Composable
+fun Preview() {
+    MeuCard(
+        GameCards(
+            1,
+            "Ghost of Yotei",
+            399.toBigDecimal(),
+            "https://www.europanet.com.br/upload/id_produto/60_____/6001506p.jpg",
+            R.drawable.game_image
+        ), onClick = {})
+}

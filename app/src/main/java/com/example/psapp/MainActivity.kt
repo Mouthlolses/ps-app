@@ -41,8 +41,7 @@ class MainActivity : ComponentActivity() {
 fun HomeWithDrawer() {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-
-
+    
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
