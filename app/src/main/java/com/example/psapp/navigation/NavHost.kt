@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.psapp.ui.screen.GameDetailsScreen
+import com.example.psapp.ui.screen.GameDetailsScreen2
 import com.example.psapp.ui.screen.HomeScreen
 import kotlinx.coroutines.launch
 
@@ -29,6 +30,9 @@ fun AppNavigation() {
         }
         composable("detalhesDoJogo") {
             GameDetailsScreen()
+        }
+        composable("detalhesDoJogo2") {
+            GameDetailsScreen2()
         }
     }
 }

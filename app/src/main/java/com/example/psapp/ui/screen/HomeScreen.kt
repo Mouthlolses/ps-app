@@ -114,6 +114,9 @@ fun HomeScreen(navController: NavHostController, onMenuClick: (() -> Unit)) {
                             1 -> {
                                 navController.navigate("detalhesDoJogo")
                             }
+                            2 -> {
+                                navController.navigate("detalhesDoJogo2")
+                            }
                         }
                     })
                 }
