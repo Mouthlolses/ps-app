@@ -17,14 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.psapp.R
 
 
-@Preview
 @Composable
-fun CustomBottomBar() {
+fun CustomBottomBar(navController: NavHostController) {
     val colorBrush = Brush.verticalGradient(
         colors = listOf(
             Color(0xFFEBEBF3),
@@ -36,12 +35,12 @@ fun CustomBottomBar() {
             .fillMaxWidth()
             .background(colorBrush)
             .padding(horizontal = 16.dp)
-            .padding(top = 8.dp) // altura que você quiser
+            .padding(top = 8.dp)
             .navigationBarsPadding(),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = { /* ação */ }) {
+        IconButton(onClick = { navController.navigate("news") }) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Icon(
                     painter = painterResource(R.drawable.icon_2),
@@ -52,7 +51,7 @@ fun CustomBottomBar() {
                 )
             }
         }
-        IconButton(onClick = { /* ação */ }) {
+        IconButton(onClick = { navController.navigate("home") }) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Icon(
                     painter = painterResource(R.drawable.icon_1),

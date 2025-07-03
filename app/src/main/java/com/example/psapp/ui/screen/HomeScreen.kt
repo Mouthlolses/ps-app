@@ -85,7 +85,7 @@ fun HomeScreen(navController: NavHostController, onMenuClick: (() -> Unit)) {
                 )
             )
         },
-        bottomBar = { CustomBottomBar() }
+        bottomBar = { CustomBottomBar(navController) }
     ) { innerPadding ->
         Column(
             modifier = Modifier
